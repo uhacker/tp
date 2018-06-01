@@ -1,0 +1,6 @@
+[ 2018-05-29T09:39:57+08:00 ] ::1 /tp/Application/Admin/Public/assets/js/jquery.min.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000065s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000919s ]
+ERR: 无法加载模块:Application
+

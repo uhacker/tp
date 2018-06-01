@@ -1,0 +1,10 @@
+.header {text-align: center;}
+.header h3{padding:52px 0 10px 0;color:#333333;}
+.content{margin:0 auto;width:460px;box-shadow:0 0 18px rgba(0,0,0,0.28);}
+.content div{padding:0px;}
+.content h3{width:100%;padding:14px;background:#e8e8e8;color:#474747;text-align:center;}
+.goLogin{margin:22px 0;}
+.goLogin button{background:#92c623;color:#ffffff;}
+.goLogin button:hover{color:#ffffff;}
+.goLogin button i{padding:0 10px;}
+.formItem{margin:22px 0 0 0;}
