@@ -50,7 +50,7 @@
   <div class="admin-content">
     <div class="admin-content-body">
       <div class="am-cf am-padding am-padding-bottom-0">
-        <div class="am-fl am-cf"><small class="am-text-primary am-text-lg">会员管理</small> / <small>Member management</small></div>
+        <div class="am-fl am-cf"><small class="am-text-primary am-text-lg">软文管理</small> / <small>Essay management</small></div>
       </div>
       <hr/>
 
@@ -62,30 +62,24 @@
 		            <table class="am-table am-table-striped am-table-hover table-main">
 		              <thead>
 		              <tr>
-		                <th class="table-id">ID</th><th class="table-type">级别</th><th class="table-title">账户</th><th class="table-date am-hide-sm-only">密码</th><th class="table-type">状态</th><th class="table-set">操作</th>
+		                <th class="table-id">ID</th><th class="table-type">标题</th><th class="table-title">类别</th><th class="table-date am-hide-sm-only">缩略图</th><th class="table-type">浏览量</th><th class="table-type">评论量</th><th class="table-type">时间</th><th class="table-set">操作</th>
 		              </tr>
 		              </thead>
 		              <tbody id="adminPanel">
 		              <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><tr>
 			                <td width="6%"><?php echo ($item["id"]); ?></td>
-		                      <?php if($item["level"] == 1): ?><td width="8%">高级</td>
-		                      <?php elseif($item["level"] == 2): ?>
-		                        <td width="8%">一般</td>
-		                      <?php elseif($item["level"] == 3): ?>
-		                        <td width="8%">普通</td><?php endif; ?>
-			                <td class="am-text-nowrap" width="22%"><?php echo ($item["account"]); ?></td>
-			                <td class="am-text-nowrap" width="20%">......</td>
-			                <?php if($item["status"] == 0): ?><td class="am-text-nowrap" width="10%">活跃</td>
-			                <?php elseif($item["status"] == 1): ?>
-			                  <td class="am-text-nowrap" width="10%" style="opacity:0.5">禁用</td><?php endif; ?>
+                      <td width="18%"><?php echo ($item["title"]); ?></td>
+			                <td class="am-text-nowrap" width="6%"><?php echo ($item["classify"]); ?></td>
+			                <td class="am-text-nowrap" width="14%"><img src="<?php echo ($item["image"]); ?>" alt=""></td>
+                      <td class="am-text-nowrap" width="7%"><?php echo ($item["look"]); ?></td>
+                      <td class="am-text-nowrap" width="7%"><?php echo ($item["discuss"]); ?></td>
+                      <td class="am-text-nowrap" width="8%"><?php echo ($item["time"]); ?></td>
 			                <td width="34%">
 			                  <div class="am-btn-toolbar">
 			                    <div class="am-btn-group am-btn-group-xs">
-				                    <?php if($item["status"] == 0): ?><button data-id="<?php echo ($item["id"]); ?>" class="am-btn am-btn-default am-btn-xs userActive"><span class="am-icon-copy"></span> 禁用</button>
-				                    <?php else: ?>
-				                      <button data-id="<?php echo ($item["id"]); ?>" class="am-btn am-btn-default am-btn-xs am-text-secondary userActive"><span class="am-icon-copy"></span> 激活</button><?php endif; ?>
+                            <button data-id="<?php echo ($item["id"]); ?>" class="am-btn am-btn-default am-btn-xs am-text-secondary essayAdd"><span class="am-icon-copy"></span> 新增</button>
 			                      <button data-id="<?php echo ($item["id"]); ?>" class="am-btn am-btn-default am-btn-xs am-text-success userEdit"><span class="am-icon-pencil-square-o"></span> 编辑</button>
-	                              <button data-id="<?php echo ($item["id"]); ?>" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only userDelete"><span class="am-icon-trash-o"></span> 删除</button>
+                            <button data-id="<?php echo ($item["id"]); ?>" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only userDelete"><span class="am-icon-trash-o"></span> 删除</button>
 			                    </div>
 			                  </div>
 			                </td>
@@ -104,20 +98,28 @@
 <!--增加-->
 <div class="am-modal am-modal-confirm" tabindex="-1" id="add-confirm">
   <div class="am-modal-dialog">
-    <div class="am-modal-hd">增加管理员</div>
+    <div class="am-modal-hd">增加软文</div>
     <div class="am-modal-bd">
       <div class="am-u-sm-11 am-form am-u-sm-centered">
         <div class="am-form-group am-form-icon formItem">
           <i class="am-icon-gavel"></i>
-          <input type="text" name="addType" id="addType" class="am-form-field" value="坛主" disabled="disabled">
+          <input type="text" name="title" id="title" class="am-form-field" value="" placeholser="标题">
         </div>
         <div class="am-form-group am-form-icon formItem">
           <i class="am-icon-envelope-o"></i>
-          <input type="email" name="addEmail" id="addEmail" class="am-form-field" value="" placeholder="Email">
+          <input type="text" name="classify" id="classify" class="am-form-field" value="" placeholder="类别">
         </div>
         <div class="am-form-group am-form-icon formItem">
           <i class="am-icon-lock"></i>
-          <input type="password" name="addPassword" id="addPassword" class="am-form-field" value="" placeholder="Password">
+          <input type="file" name="image" id="image" class="am-form-field" value="" placeholder="图片">
+        </div>
+        <div class="am-form-group am-form-icon formItem">
+          <i class="am-icon-lock"></i>
+          <input type="text" name="look" id="look" class="am-form-field" value="" placeholder="浏览量">
+        </div>
+        <div class="am-form-group am-form-icon formItem">
+          <i class="am-icon-lock"></i>
+          <input type="text" name="discuss" id="discuss" class="am-form-field" value="" placeholder="评论量">
         </div>
       </div>
     </div>
@@ -168,112 +170,19 @@
 </div>
 </body>
 <script>
-$(function(){
-	var act = $('.userActive');
-	var del;
-	var idDom;
-	var editPanel = $('#edit-confirm');
-	var editPassword = $('#editPassword');
-	//active
-	act.bind('click', function(){
-		var that = $(this);
-		var id = that.data()['id'];
-	    $.ajax({
-	        type:"post",
-	        async:true,
-	        url:"http://localhost/tp/index.php/Admin/Members/active",
-	        dataType:"json",
-	        data:{ id: id },
-	        success: function(res) {
-	        	if(res == 0){
-	        		that.removeClass('am-text-secondary').html('<span class="am-icon-copy"></span>' + ' 禁用');
-	        		that.parents("td").prev().text('活跃').css('opacity','1');
-	        	}else if(res == 1){
-	        		that.addClass('am-text-secondary').html('<span class="am-icon-copy"></span>' + ' 激活');
-	        		that.parents("td").prev().text('禁用').css('opacity','0.5');
-	        	}
-	        },
-	        error: function(err){
-	          console.log(err);
-	        }
-	    });
-	});
-  //delete
-  $(document).on('click', '.userDelete', function() {
-    del = $(this).attr('data-id');
-    idDom = $(this).parents('tr');
-      $('#delete-confirm').modal({
-        onConfirm: function() {
-          goDelete();
+  var addPanel = $('#add-confirm');
+  //add
+  $(document).on('click', '.essayAdd', function() {
+      addPanel.modal({
+        relatedTarget: this,
+        onConfirm: function(e) {
+          console.log('success');
+        },
+        onCancel: function(e) {
+          addPanel.modal('close');
         }
       });
+      $('#add-confirm').off('click.close.modal.amui');
     });
-
-  function goDelete(){
-    $.ajax({
-        type:"post",
-        async:true,
-        url:"http://localhost/tp/index.php/Admin/Members/del",
-        dataType:"json",
-        data:{ id: del },
-        success: function(res) {
-          if(res){
-            idDom.remove();
-          }
-        },
-        error: function(err){
-          console.log(err);
-        }
-    });
-  }
-  //edit
-  $(document).on('click','.userEdit', function(){
-    var id = $(this).attr('data-id');
-    $.ajax({
-        type:"post",
-        async:true,
-        url:"http://localhost/tp/index.php/Admin/Members/edit",
-        dataType:"json",
-        data:{ id: id },
-        success: function(res) {
-          $('.editLevel').val(res[0].level);
-          $('.editName').val(res[0].account);
-          $('.editPass').val(res[0].password);
-          $('#edit-confirm').modal({
-            relatedTarget: this,
-            onConfirm: function(e) {
-              var level = $('.editLevel').val();
-              var account = $('.editName').val();
-              var pass = $('.editPass').val();
-              if(pass.length === 6){
-                $.ajax({
-                    type:"post",
-                    async:true,
-                    url:"http://localhost/tp/index.php/Admin/Members/edit2",
-                    dataType:"json",
-                    data:{
-                      id: res[0].id,
-                      level : level,
-                      account : account,
-                      password : pass
-                    },
-                    success: function(res){
-                      editPanel.modal('close');
-                      console.log(res);
-                    }
-                });
-              }else{
-                editPassword.css('border','1px solid #c82829');
-              }
-            },
-            onCancel: function(e) {
-              editPanel.modal('close');
-            }
-          });
-          $('#edit-confirm').off('click.close.modal.amui');
-        }
-    });
-  });
- });
 </script>
 </html>

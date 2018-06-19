@@ -1,0 +1,11 @@
+[ 2018-06-04T13:47:57+08:00 ] ::1 /tp/index.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000089s ]
+INFO: [ app_init ] --END-- [ RunTime:0.034375s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015832s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.016285s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.016618s ]
+INFO: [ app_end ] --END-- [ RunTime:0.017101s ]
+

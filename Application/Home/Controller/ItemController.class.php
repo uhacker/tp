@@ -22,5 +22,9 @@ class ItemController extends Controller {
         $num = rand(0, 100);
         $this->ajaxReturn($num, 'json', header("access-control-allow-origin:*"));
     }
+    public function search(){
+        $status = true; //是否有数据
+        $this->ajaxReturn($status, 'json', header("access-control-allow-origin:*"));
+    }
 
 }
